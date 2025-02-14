@@ -1,12 +1,12 @@
 name: 'Git CLI for Actions'
 description: 'A Git CLI alternative that runs seamlessly in GitHub Actions'
 runs:
-  using: 'composite'
-  steps:
-    - name: Run Git command inside Docker
-      shell: bash
-      run: |
-        docker run --rm -v $GITHUB_WORKSPACE:/repo my-org/git-cli-for-actions git ${{ inputs.command }}
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}
+  volumes:
+    - ${{ github.workspace }}:/repo
 
 inputs:
   command:
