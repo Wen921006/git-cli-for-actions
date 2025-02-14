@@ -1,0 +1,15 @@
+name: 'Git CLI for Actions'
+description: 'A Git CLI alternative that runs seamlessly in GitHub Actions'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}
+  volumes:
+    - ${{ github.workspace }}:/repo
+
+inputs:
+  command:
+    description: 'Git command to run'
+    required: true
+    default: 'status'
