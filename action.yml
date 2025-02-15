@@ -13,3 +13,5 @@ inputs:
     description: 'Git command to run'
     required: true
     default: 'status'
+    - name: Git CLI for Actions
+  uses: KangYoungIn/git-cli-for-actions@v1.0.0
